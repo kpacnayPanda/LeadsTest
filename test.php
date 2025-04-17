@@ -57,5 +57,16 @@ $data = [
     ]
 ];
 
+function printData(array $data) {
+    $row = "+-" . str_repeat("-", strlen("Internal History ID")) . "-|-" . str_repeat("-", strlen("External ID")) . "-|-". str_repeat("-", strlen("External Commision")) . "-+\n" ;
+    print($row);
+    print("| Internal History ID | External ID | External Commision |\n");
+    print($row);
+    foreach($data as $row) {
+        print("| " . $row["internal_history_id"] . " | " . $row["external_id"] . " | " . $row["external_commission"] . " |\n");
+    }
+    print($row);
+}
 
+printData($data);
 ?>
