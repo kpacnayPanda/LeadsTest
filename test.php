@@ -58,14 +58,17 @@ $data = [
 ];
 
 function printData(array $data) {
-    $row = "+-" . str_repeat("-", strlen("Internal History ID")) . "-|-" . str_repeat("-", strlen("External ID")) . "-|-". str_repeat("-", strlen("External Commision")) . "-+\n" ;
-    print($row);
+    $delimeter = "+-" . str_repeat("-", strlen("Internal History ID")) . "-|-" . str_repeat("-", strlen("External ID")) . "-|-". str_repeat("-", strlen("External Commision")) . "-+\n" ;
+    print($delimeter);
     print("| Internal History ID | External ID | External Commision |\n");
-    print($row);
+    print($delimeter);
     foreach($data as $row) {
-        print("| " . $row["internal_history_id"] . " | " . $row["external_id"] . " | " . $row["external_commission"] . " |\n");
+        print("| " 
+        . $row["internal_history_id"] . str_repeat(" ", strlen("Internal History ID") - strlen($row["internal_history_id"]))
+        . " | " . $row["external_id"] . str_repeat(" ", strlen("External ID") - strlen($row["external_id"]))
+        . " | " . $row["external_commission"] . str_repeat(" ", strlen("External Commision") - strlen($row["external_commission"])) . " |\n");
     }
-    print($row);
+    print($delimeter);
 }
 
 printData($data);
